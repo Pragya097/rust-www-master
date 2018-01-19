@@ -1,0 +1,189 @@
+---
+layout: ja-JP/default
+title: インストール &middot; プログラミング言語Rust
+---
+    <h1 class="rustup">Rustのインストール</h1>
+
+    <div class="row rustup-row">
+      <div class="col-md-8 instr-column">
+        <div id="platform-instructions-unix" class="instructions" style="display: none;">
+          <p>Rustをインストールするにはターミナルで以下を実行して画面の指示に従って下さい。</p>
+          <pre>curl https://sh.rustup.rs -sSf | sh</pre>
+        </div>
+
+        <div id="platform-instructions-win" class="instructions" style="display: none;">
+          <p>
+            Rustをインストールするには
+            <a href="https://win.rustup.rs">rustup&#x2011;init.exe</a>
+            をダウンロードして実行し画面の指示に従って下さい。
+          </p>
+        </div>
+
+        <div id="platform-instructions-unknown" class="instructions" style="display: none;">
+            <!-- unrecognized platform: ask for help -->
+            <p>お使いのプラットフォームを認識出来ませんでした。</p>
+            <p>
+                RustはWindows、Linux、Mac OS X、FreeBSD、NetBSD上で動きます。
+                これらのプラットフォームを使っているのにこのメッセージが出る場合は、
+                以下の情報と共に
+                <a href="https://github.com/rust-lang/rust-www/issues/new">問題を報告して下さい</a>
+          </p>
+
+          <div>
+            <div>navigator.platform:</div>
+            <div id="nav-plat"></div>
+            <div>navigator.appVersion:</div>
+            <div id="nav-app"></div>
+          </div>
+
+          <!-- duplicate the default cross-platform instructions -->
+          <div>
+              <p>Rustをインストールするには、Unixをお使いなら、<br/>
+                  以下をターミナル上で実行して、画面の指示に従って下さい。</p>
+              <pre>curl https://sh.rustup.rs -sSf | sh</pre>
+          </div>
+
+          <hr/>
+
+          <div>
+              <p>
+                  Windowsをお使いなら、<br/>
+                  <a href="https://win.rustup.rs">rustup&#x2011;init.exe</a>
+                  をダウンロードして実行し、画面の指示に従って下さい
+              </p>
+          </div>
+        </div>
+
+        <div id="platform-instructions-default" class="instructions">
+          <div>
+            <p>Rustをインストールするには、Unixをお使いなら、<br/>
+            以下をターミナル上で実行して、画面の指示に従って下さい。</p>
+            <pre>curl https://sh.rustup.rs -sSf | sh</pre>
+          </div>
+
+          <hr/>
+
+          <div>
+            <p>
+              Windowsをお使いなら、<br/>
+              <a href="https://win.rustup.rs">rustup&#x2011;init.exe</a>
+              をダウンロードして実行し、画面の指示に従って下さい
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-4 release-info-column">
+        <div>
+          <div class="release-version">Rust <span>{{ site.stable }}</span></div>
+          <a href="{{ site.stable_blog }}">
+            <div class="release-date">{{ site.stable_date | date: "%B %-d, %Y" }}</div>
+          </a>
+
+          <br>
+
+          <a id="platform-button" style="display: none;" href="#">
+            プラットフォームを送るにはクリックするか「n」を押して下さい
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Rustのインストールに関する注意</h2>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <h3><code>rustup</code>を使ったツールチェーン管理</h3>
+
+        <p>
+          Rustは
+          <a href="https://github.com/rust-lang-nursery/rustup.rs"><code>rustup</code></a>
+          を使ってインストール及び管理されます。
+          Rustは6週間の
+          <a href="https://github.com/rust-lang/rfcs/blob/master/text/0507-release-channels.md">
+            高速リリースプロセス
+          </a>を採用しており、
+          <a href="https://forge.rust-lang.org/platform-support.html">
+             多数のプラットフォームをサポートしています
+          </a>ので、いつでも複数種類のRustのビルドが利用可能です。
+          <code>rustup</code>は全てのRustがサポートするプラットフォーム上で全く同じようにこれらのビルドを管理し、
+          betaやnightlyのリリースチャネル、追加のクロスコンパイルターゲットからのインストールも可能にします。
+        </p>
+
+        <p>
+          さらなる情報は
+          <a href="https://github.com/rust-lang-nursery/rustup.rs/blob/master/README.md"><code>rustup</code>
+          のドキュメントを参照して下さい</a>。
+        </p>
+
+        <h3><code>PATH</code>環境変数の設定</h3>
+
+        <p>
+          Rustの開発では、全てのツールは
+          <span class="platform-specific not-win" style="display: inline;">
+            <code>~/.cargo/bin</code>
+          </span>
+          <span class="platform-specific win" style="display: none;">
+            <code>%USERPROFILE%\.cargo\bin</code>
+          </span> ディレクトリにインストールされるので、
+          <code>rustc</code>, <code>cargo</code>、<code>rustup</code>
+          などのツールがそこにある筈です。
+        </p>
+
+        <p>
+          従って、Rustの開発者は慣例的にこのディレクトリを
+          <a href="https://en.wikipedia.org/wiki/PATH_(variable)"><code>PATH</code>環境変数</a>
+          に含めます。
+          インストール時に、<code>rustup</code>が<code>PATH</code>を設定しようとしますが、 プラットフォームごと、シェルごとの差異、あるいは<code>rustup</code>のバグのために<code>PATH</code>への変更が反映されない場合があります。その場合はコンソールを再起動するか再ログインしてください。それでも反映されない場合は失敗しています。
+        </p>
+
+        <p>
+          もしインストール後に<code>rustc --version</code>を実行してみて失敗するなら、恐らくPATHの設定に失敗しているのが原因でしょう。
+        </p>
+
+        <div class="platform-specific win">
+
+          <h3>Windowsでの留意事項</h3>
+          <!-- This anchor is probably linked in the wild and should not be broken -->
+          <a id="win-foot"></a>
+
+	  <p>
+            Windowsでは、Rustは追加でVisual Studio 2013以降のC++のビルドツールを要求します。
+            入手するにはVisual C++ビルドツールを同梱している
+	    <a href="https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017">
+	      Microsoft Visual C++ Build Tools 2017
+            </a>
+            をインストールします。
+            あるいは、Visual Studio 2015かVisual Studio 2013を
+            <a href="https://www.visualstudio.com/downloads/">インストール</a>
+            して、インストール時に「C++ tools」を選択します。
+	  </p>
+
+          <p>
+            WindowsでのRustの設定方法についてのさらなる情報は
+            <a href="https://github.com/rust-lang-nursery/rustup.rs/blob/master/README.md#working-with-rust-on-windows">Windows向け <code>rustup</code>
+            ドキュメント</a>を参照して下さい。
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <h2>その他のインストール方法</h2>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          上記の<code>rustup</code>を使った方法がほとんどの開発者に推奨されるRustのインストール方法ですが、必要に応じて
+          <a href="other-installers.html">他の方法でインストール</a>することも出来ます。
+        </p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      {% include rustup.js %}
+    </script>
+

@@ -1,0 +1,92 @@
+---
+layout: zh-CN/default
+title: Rust 安全政策 &middot; Rust 程序设计语言
+---
+
+<h1>Rust 安全政策</h1>
+
+<h2>报告 Bug</h2>
+
+<p>安全是 Rust 的核心原则之一，为此目的，
+我们尽力确保 Rust 有一个安全的实现。
+感谢您花费时间来负责任地披露您发现的任何问题。</p>
+
+<p>Rust 分发版本中的所有安全漏洞都应通过电子邮件报告至 
+<a href="mailto:security@rust-lang.org">security@rust-lang.org</a>。
+此列表被交付给一个小型的安全团队。您的电子邮件将在24小时内被确认妥收，
+并将在48小时内收到更详细的回复通知处理报告的后续步骤。如果您愿意，您可以
+使用<a href="../rust-security-team-key.gpg.ascii">我们的公钥</a>加密您的报告。
+此密钥也被放在 <a
+href="https://pgp.mit.edu/pks/lookup?op=vindex&amp;search=0xEFB9860AE7520DAC">
+MIT 的密钥服务器</a>和<a href="#key">本页末尾</a>。
+
+<p>此电子邮件地址有收到大量垃圾邮件，因此请一定在主题行撰写有意义的描述，以免错过您的报告。
+在初步回复您的报告后，安全团队将尽力保证您了解修复与全面公布方面取得的进展。
+按 <a href="https://en.wikipedia.org/wiki/RFPolicy">RFPolicy</a> 所推荐，
+这些更新将会至少每 5 天发送一次。现实情况中，还可能
+每 24-48 小时发送一次。</p>
+
+<p>如果您没有在48小时内收到您的电子邮件的回复，或者
+过去五天都没有听到安全小组的音信，
+还有几个步骤可以采取：</p>
+
+<ul>
+    <li>直接联系目前的安全协调员 (<a href="mailto:steve@steveklabnik.com">Steve Klabnik</a>
+        (<a href="https://pgp.mit.edu/pks/lookup?op=vindex&amp;search=0xDAE717EFE9424541">公钥</a>)。</li>
+    <li>直接联系后备联系人 (<a href="mailto:andersrb@gmail.com">Brian Anderson</a>
+        (<a href="https://pgp.mit.edu/pks/lookup?op=vindex&amp;search=0x16457A6368CFF26F">公钥</a>))。</li>
+    <li>Post on the <a href="https://internals.rust-lang.org/">internals forums</a>
+    或在 irc.mozilla.org 上的 IRC 房间 #rust-internals 询问。</li>
+</ul>
+
+<p>请注意，论坛和 #rust-internals IRC 频道为公共区域。
+在这些场地寻求联络人时，不要讨论你的问题。
+只需简单地说，你正在找一个负责安全方面的联系人。
+team.</p>
+
+<h2>披露政策</h2>
+
+<p>Rust 项目的披露流程有5个步骤。</p>
+
+<ol>
+<li>收到安全报告，分配一个主导处理人。他将负责协调修复和发布流程。</li>
+
+<li>确认问题并确定所有受影响版本的列表。</li>
+
+<li>审计代码以发现任何潜在的类似问题。</li>
+
+<li>为所有仍在维护的版本准备修补程序。
+这些修补程序不会提交到公共代码库，而是放在本地
+等待公告。</li>
+
+<li>在 embargo 日期，<a href="https://groups.google.com/forum/#!forum/rustlang-security-announcements">
+Rust 安全邮件列表</a> 发布公告的副本。变更
+被推送到公共代码库并将新的构建版本部署到 
+rust-lang.org。在邮件列表收到通知的 6 小时内，在 Rust 博客上发布通告。</li> </ol>
+
+<p>此流程可能需要一些时间，特别是需要与其他项目的维护者协调时。
+我们会尽力、尽量及时地处理问题，但遵循我们上述的发布流程以确保
+一致处理披露也十分重要。</p>
+
+<h2>接收安全更新</h2>
+
+<p>接收所有安全公告的最佳方式是
+订阅 <a
+href="https://groups.google.com/forum/#!forum/rustlang-security-announcements">Rust
+安全公告邮件列表</a>。该邮件列表通讯量很少，
+将在取消 embargo 时收到公开通知。</p>
+
+<h3>提前通知</h3>
+
+<p>我们将在 embargo 的 72小时之前通告漏洞至 
+<a href="http://oss-security.openwall.org/wiki/mailing-lists/distros">distros@openwall</a>，
+以便 Linux 发行版可以更新其软件包。</p>
+
+<h2>评论此政策</h2>
+
+<p>如果您有任何建议来改善此政策，请发送电子邮件至
+<a href="mailto:security@rust-lang.org">security@rust-lang.org</a>.</p>
+
+<h2 id="key">纯文本 PGP Key</h2>
+
+<pre><code>{% include rust-security-team-key.gpg.ascii %}</code></pre>
